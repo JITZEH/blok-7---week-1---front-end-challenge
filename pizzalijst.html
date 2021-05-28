@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- custom CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- footer css -->
+    <link rel="stylesheet" type="text/css" href="footer.css">
+    <!-- font awsome -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    
+
+
+    <title>pizzalijst</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class='nav-link' href="index.html">🔙  back to home 🔙</a>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Pizzalijst</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="pizzacalculator.html">pizzacalculator</a>
+        </li>
+        <li>
+          <div id="priceall">
+            <a id="openSCimg">
+              <img src="img/shopping-cart.png">
+            </a>
+            <p></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="rows">
+  <div id="pizzas"></div>   
+</div>
+<div class="rows">
+  <div id="sizes"class='hidden'></div>   
+</div>
+<div class="rows ">
+  <div id="toppings"class='hidden'></div>   
+</div>
+<div class='col-6 col-sm-2 hidden'id='template'>
+  <div class='card' style='width: 18rem;'>
+   <img src=''  class='card-img-top' alt='...'>
+    <div class='card-body'>
+      <p class='card-text'></p> 
+      <br/>
+      <div class='price'></div>
+      <button class='addButton'>+</button>
+      </div>
+    </div>
+</div> 
+<button id="nextpage">next page</button>
+<button id="openSC" class="hidden">open shoppingcart</button>
+<button id="newPizza">new Pizza</button>
+<section class="hidden" id="shoppingcart">
+  <a><img id="exitSC" src="img/exit.svg"> </a>
+  <div id="divgray">
+    
+      <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-8" >
+              <div id="SCelements">
+                <div class="p-2">
+                    <h4>Shopping cart</h4>
+                </div>
+
+                <!-- template -->
+                <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded hidden" id="templateSC">
+                    <div class="mr-1"><img class="rounded" id="shopimg" src="" width="70"></div>
+                    <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold" id="shopname"></span>
+                        <div class="d-flex flex-row product-desc">
+                             <div class="size mr-1"><span class="text-grey">Size:</span><span class="font-weight-bold" id="sizeSC">&nbsp;</span></div>
+                            <div class="color"><span class="text-grey">topping:</span><span class="font-weight-bold" id="toppingSC">&nbsp;</span></div> 
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
+                        <h5 class="text-grey mt-1 mr-1 ml-1" id="shoptopping"></h5><i class="fa fa-plus text-success"></i>
+                    </div>
+                    <div>
+                        <h5 class="text-grey" id="shopprice"></h5>
+                    </div>
+                  </div>
+                <!-- template -->
+              </div>
+                <!-- total -->
+                <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                    
+                    <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
+                        <h5 class="text-grey mt-1 mr-1 ml-1" id="totalword">total:</h5><i class="fa fa-plus text-success"></i>
+                    </div>
+                    <div>
+                        <h5 class="text-grey" id="totalprice"></h5>
+                    </div>
+                </div>
+                <!-- total -->
+                <label for="cars">in hoeveel stukken moet de pizza?</label>
+                  <select name="cars" id="cars">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                  </select>
+                 <br>
+                <input type="checkbox" id="thuisbezorgd" onclick="thuisbezorgdFunc();">moet het thuisbezorgd worden voor €2,-</input>
+                 <br>
+                <input type="checkbox" id="betaalmetpin" onclick="betaalMetPinFunc();"> Ik betaal met pin en krijg €2,- korting</input>
+                <!-- proceed to pay  -->
+                <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceed to Pay</button></div>
+                <!-- proceed to pay  -->
+              </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+<ul class="foote_bottom_ul_amrc">
+<li class="nav-item">
+          <a class='terug ' href="index.html">🔙  terug naar home 🔙</a>
+        <li class="nav-item">
+          <a class="active" href="#">Pizzalijst</a>
+        </li>
+        <li class="nav-item">
+          <a  href="pizzacalculator.html">pizzacalculator</a>
+        </li>
+</ul>
+
+<p class="text-center">Copyright 2021 | Designed by <a href="jitzevanderhoek.nl">Av en toe</a></p>
+
+<ul class="social_footer_ul">
+<li><a id="minpadding" href="https://jitzevanderhoek.nl"><i class="fas fa-globe"></i></a></li>
+<li><a href="https://nl.linkedin.com/in/jitze-van-der-hoek-a183a4171"><i class="fab fa-linkedin"></i></a></li>
+<li><a href="https://www.instagram.com/aventoejitze/"><i class="fab fa-instagram"></i></a></li>
+</ul>
+
+
+</footer>
+    
+  
+    <!--  Bootstrap js  -->
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
+    <!--  custom script   -->
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
